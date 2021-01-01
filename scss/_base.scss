@@ -10,6 +10,18 @@ html {
 }
 
 body {
+  @include flexCenter;
+  flex-direction: column;
   font-size: 1.4rem;
   font-family: $font-primary;
+  color: $color-neutral-white;
+  min-height: 100vh;
+  // background: url(/images/pattern-hills.svg) no-repeat bottom / contain,
+  background: url(/images/pattern-hills.svg) no-repeat bottom,
+    url(/images/bg-stars.svg),
+    linear-gradient(
+      to bottom,
+      $color-neutral-mostly-black-blue,
+      $color-neutral-very-dark-blue
+    );
 }

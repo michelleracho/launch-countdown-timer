@@ -17,11 +17,12 @@ body {
   color: $color-neutral-white;
   min-height: 100vh;
   // background: url(/images/pattern-hills.svg) no-repeat bottom / contain,
-  background: url(/images/pattern-hills.svg) no-repeat bottom,
+  background: url(/images/pattern-hills.svg) no-repeat bottom right 20%,
     url(/images/bg-stars.svg),
     linear-gradient(
       to bottom,
       $color-neutral-mostly-black-blue,
       $color-neutral-very-dark-blue
     );
+  position: relative;
 }

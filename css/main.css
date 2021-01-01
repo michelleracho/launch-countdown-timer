@@ -29,7 +29,49 @@ body {
   font-family: "Red Hat Text", sans-serif;
   color: white;
   min-height: 100vh;
-  background: url(/images/pattern-hills.svg) no-repeat bottom, url(/images/bg-stars.svg), -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#1e1f29));
-  background: url(/images/pattern-hills.svg) no-repeat bottom, url(/images/bg-stars.svg), linear-gradient(to bottom, #191a24, #1e1f29);
+  background: url(/images/pattern-hills.svg) no-repeat bottom right 20%, url(/images/bg-stars.svg), -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#1e1f29));
+  background: url(/images/pattern-hills.svg) no-repeat bottom right 20%, url(/images/bg-stars.svg), linear-gradient(to bottom, #191a24, #1e1f29);
+  position: relative;
+}
+
+.footer {
+  position: absolute;
+  bottom: 1rem;
+}
+
+.footer__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style-type: none;
+  margin-bottom: 3rem;
+}
+
+.footer__item:not(:last-of-type) {
+  margin-right: 3.2rem;
+}
+
+.footer__link svg > path {
+  -webkit-transition: fill 0.2s ease;
+  transition: fill 0.2s ease;
+}
+
+.footer__link:hover svg > path {
+  fill: #fb6087;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: #3e52a3;
 }
 /*# sourceMappingURL=main.css.map */

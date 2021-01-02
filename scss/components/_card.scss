@@ -27,47 +27,58 @@
 .card-face__back {
   background-color: $color-neutral-desaturated-blue;
   // border-radius: 0.5rem;
-  border-radius: calc(0.5vw + 0.5rem);
+  // border-radius: $border-radius;
 }
 
 .card-face__front {
+  // background-color: blue;
   align-items: flex-end;
+  box-shadow: inset 0 1em 0 rgba($color-neutral-mostly-black-blue, 0.35);
+  border-radius: $border-radius $border-radius 0 0;
 }
 
 .card-face__back {
+  // background-color: red;
   align-items: flex-start;
   transform: rotateX(180deg);
+  border-radius: 0 0 $border-radius $border-radius;
 }
 
+.cutout,
 .card__cutout {
   position: absolute;
-  z-index: 100;
+  // z-index: 100;
   width: 100%;
   height: 100%;
-  // border: 1px solid wheat;
 
   &::before,
   &::after {
     content: '';
     position: absolute;
     bottom: 0;
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 0.15em;
+    height: 0.15em;
+    transform: translateY(50%);
     background-color: $color-neutral-mostly-black-blue;
     // border-radius: 50%;
   }
 
   &::before {
     left: 0;
-    transform: translateY(50%);
-    // background-color: red;
     clip-path: circle(50% at 0 50%);
   }
 
   &::after {
     right: 0;
-    transform: translateY(50%);
-    // background-color: blue;
-    clip-path: circle(50% at 100% 48%);
+    clip-path: circle(50% at 100% 50%);
+  }
+}
+
+.card-face__back.cutout {
+  &::before,
+  &::after {
+    bottom: unset;
+    top: 0;
+    transform: translateY(-50%);
   }
 }

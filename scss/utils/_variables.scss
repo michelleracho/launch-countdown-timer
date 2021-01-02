@@ -1,5 +1,4 @@
 // COLORS
-
 $color-primary-grayish-blue: hsl(237, 18%, 59%);
 $color-primary-red: hsl(345, 95%, 68%);
 
@@ -10,3 +9,8 @@ $color-neutral-mostly-black-blue: hsl(234, 17%, 12%);
 
 // FONT
 $font-primary: 'Red Hat Text', sans-serif;
+
+// UTILITIES
+// $border-radius: calc(0.5vw + 0.1rem); // or 0.5rem
+// $border-radius: 0.12em;
+$border-radius: calc(0.25vw + 0.4rem);

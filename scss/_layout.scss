@@ -1,0 +1,12 @@
+.container {
+  @include flexCenter;
+  flex-direction: column;
+  margin: 14.1rem 2.4rem auto;
+
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+    letter-spacing: clamp(0.3em, 5vw, 0.275em);
+    text-transform: uppercase;
+    text-align: center;
+  }
+}

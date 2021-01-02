@@ -25,23 +25,60 @@
       <h1>We're launching soon</h1>
 
       <div class="countdown">
-        <!-- <div class="card"><span class="time">08</span> Days</div>
-        <div class="card"><span class="time">23</span> Hours</div>
-        <div class="card"><span class="time">55</span> Minutes</div>
-        <div class="card"><span class="time">41</span> Seconds</div> -->
-
         <figure
-          id="hour"
+          id="days"
           class="flip-clock"
-          data-current-number="0"
-          data-next-number="1"
+          data-current-number="08"
+          data-next-number="07"
         >
           <div class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-face card-face__front">0</div>
-            <div class="card-face card-face__back">1</div>
+            <div class="card-face card-face__front">08</div>
+            <div class="card-face card-face__back">07</div>
           </div>
 
-          <!-- <figcaption>Hours</figcaption> -->
+          <figcaption class="flip-clock__caption">Days</figcaption>
+        </figure>
+
+        <figure
+          id="hours"
+          class="flip-clock"
+          data-current-number="23"
+          data-next-number="22"
+        >
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face__front">23</div>
+            <div class="card-face card-face__back">22</div>
+          </div>
+
+          <figcaption class="flip-clock__caption">Hours</figcaption>
+        </figure>
+
+        <figure
+          id="minutes"
+          class="flip-clock"
+          data-current-number="55"
+          data-next-number="54"
+        >
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face__front">55</div>
+            <div class="card-face card-face__back">54</div>
+          </div>
+
+          <figcaption class="flip-clock__caption">Minutes</figcaption>
+        </figure>
+
+        <figure
+          id="seconds"
+          class="flip-clock"
+          data-current-number="41"
+          data-next-number="40"
+        >
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face__front">41</div>
+            <div class="card-face card-face__back">40</div>
+          </div>
+
+          <figcaption class="flip-clock__caption">Seconds</figcaption>
         </figure>
       </div>
     </main>

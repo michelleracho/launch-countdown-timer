@@ -1,33 +1,55 @@
 .flip-clock {
+  font-size: clamp(3.5rem, 5vw, 7.8rem);
+  color: $color-primary-red;
+  line-height: 0;
+  width: clamp(6.9rem, 9vw, 14.7rem);
+  height: clamp(6.7rem, 9vw, 14.1rem);
   display: flex;
-  perspective: 250px;
   position: relative;
-  width: 45px;
-  height: 80px;
-  background-color: $color-neutral-desaturated-blue;
-  // font-size: 3.5rem;
-  color: black;
+  perspective: 250px;
+
+  border-radius: calc(0.5vw + 0.5rem);
+  box-shadow: 0 0.14em 0 $color-neutral-mostly-black-blue;
+
+  &:not(:last-of-type) {
+    margin-right: calc(1vw + 1.76rem);
+  }
+
+  &::before,
+  &::after {
+    @include flexCenter;
+    align-items: unset;
+    background-color: $color-neutral-desaturated-blue;
+    // border-radius: 0.5rem;
+    border-radius: calc(0.5vw + 0.5rem);
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+  }
+
+  &::before {
+    content: attr(data-current-number);
+    bottom: 0;
+    align-items: flex-start;
+  }
+
+  &::after {
+    content: attr(data-next-number);
+    top: 0;
+    align-items: flex-end;
+  }
 }
 
-.flip-clock::before,
-.flip-clock::after {
-  @include flexCenter;
-  align-items: unset;
-  position: absolute;
-  z-index: 0;
+.flip-clock__caption {
+  font-size: clamp(0.7rem, 1vw, 1.4rem);
+  color: $color-primary-grayish-blue;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  text-align: center;
   width: 100%;
-  height: 50%;
-  overflow: hidden;
-}
-
-.flip-clock::before {
-  content: attr(data-current-number);
-  bottom: 0;
-  align-items: flex-start;
-}
-
-.flip-clock::after {
-  content: attr(data-next-number);
-  top: 0;
-  align-items: flex-end;
+  position: absolute;
+  // bottom: calc(-1.125rem - 1vw);
+  bottom: calc(-1.56rem - 1vw);
 }

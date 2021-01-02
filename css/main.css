@@ -37,7 +37,6 @@ body {
 }
 
 .container {
-  border: 1px solid red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,25 +73,30 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 6rem;
-  font-size: 50px;
-  line-height: 0;
 }
 
 .flip-clock {
+  font-size: clamp(3.5rem, 5vw, 7.8rem);
+  color: #fb6087;
+  line-height: 0;
+  width: clamp(6.9rem, 9vw, 14.7rem);
+  height: clamp(6.7rem, 9vw, 14.1rem);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-perspective: 250px;
           perspective: 250px;
-  position: relative;
-  width: 45px;
-  height: 80px;
-  background-color: #343650;
-  color: black;
+  border-radius: calc(0.5vw + 0.5rem);
+  -webkit-box-shadow: 0 0.14em 0 #191a24;
+          box-shadow: 0 0.14em 0 #191a24;
 }
 
-.flip-clock::before,
-.flip-clock::after {
+.flip-clock:not(:last-of-type) {
+  margin-right: calc(1vw + 1.76rem);
+}
+
+.flip-clock::before, .flip-clock::after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -105,6 +109,8 @@ body {
   -webkit-box-align: unset;
       -ms-flex-align: unset;
           align-items: unset;
+  background-color: #343650;
+  border-radius: calc(0.5vw + 0.5rem);
   position: absolute;
   z-index: 0;
   width: 100%;
@@ -128,25 +134,17 @@ body {
           align-items: flex-end;
 }
 
-/*
-.card {
-  // font-size: clamp(0.7rem, 5vw, 1.4rem);
-  color: $color-primary-grayish-blue;
+.flip-clock__caption {
+  font-size: clamp(0.7rem, 1vw, 1.4rem);
+  color: #8486a9;
   letter-spacing: 0.5em;
   text-transform: uppercase;
-
-  &:not(:last-of-type) {
-    margin-right: clamp(1.6rem, 5vw, 3.2rem);
-  }
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: calc(-1.56rem - 1vw);
 }
 
-.time {
-  font-size: 7.8rem;
-  font-size: clamp(3.5em, 5vw, 7.8em);
-  letter-spacing: 0;
-  color: $color-primary-red;
-}
-*/
 .card {
   position: relative;
   z-index: 1;
@@ -158,10 +156,10 @@ body {
           transform-origin: bottom;
   -webkit-transform: rotateX(0);
           transform: rotateX(0);
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transition: -webkit-transform 0.3s ease-in;
+  transition: -webkit-transform 0.3s ease-in;
+  transition: transform 0.3s ease-in;
+  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
 }
 
 .card.flipped {
@@ -190,12 +188,16 @@ body {
           backface-visibility: hidden;
 }
 
+.card-face__front,
+.card-face__back {
+  background-color: #343650;
+  border-radius: calc(0.5vw + 0.5rem);
+}
+
 .card-face__front {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  background-color: red;
-  color: white;
 }
 
 .card-face__back {
@@ -204,8 +206,6 @@ body {
           align-items: flex-start;
   -webkit-transform: rotateX(180deg);
           transform: rotateX(180deg);
-  background-color: blue;
-  color: white;
 }
 
 .footer {

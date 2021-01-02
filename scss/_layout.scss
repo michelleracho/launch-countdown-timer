@@ -1,7 +1,10 @@
 .container {
+  border: 1px solid red;
   @include flexCenter;
   flex-direction: column;
   margin: 14.1rem 2.4rem auto;
+  margin: 14.1rem 0 auto;
+  padding: 0 2.4rem;
 
   h1 {
     font-size: clamp(1.8rem, 5vw, 2.2rem);
@@ -9,4 +12,13 @@
     text-transform: uppercase;
     text-align: center;
   }
+}
+
+.countdown {
+  @include flexCenter;
+  margin-top: 6rem;
+  // padding: 0 2.4rem;
+  // font-size: clamp(0.7rem, 5vw, 1.4rem);
+  font-size: 50px;
+  line-height: 0;
 }

@@ -1,0 +1,33 @@
+.flip-clock {
+  display: flex;
+  perspective: 250px;
+  position: relative;
+  width: 45px;
+  height: 80px;
+  background-color: $color-neutral-desaturated-blue;
+  // font-size: 3.5rem;
+  color: black;
+}
+
+.flip-clock::before,
+.flip-clock::after {
+  @include flexCenter;
+  align-items: unset;
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.flip-clock::before {
+  content: attr(data-current-number);
+  bottom: 0;
+  align-items: flex-start;
+}
+
+.flip-clock::after {
+  content: attr(data-next-number);
+  top: 0;
+  align-items: flex-end;
+}

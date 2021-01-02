@@ -1,0 +1,57 @@
+/*
+.card {
+  // font-size: clamp(0.7rem, 5vw, 1.4rem);
+  color: $color-primary-grayish-blue;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+
+  &:not(:last-of-type) {
+    margin-right: clamp(1.6rem, 5vw, 3.2rem);
+  }
+}
+
+.time {
+  font-size: 7.8rem;
+  font-size: clamp(3.5em, 5vw, 7.8em);
+  letter-spacing: 0;
+  color: $color-primary-red;
+}
+*/
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 50%;
+  transform-style: preserve-3d;
+  transform-origin: bottom;
+  transform: rotateX(0);
+  transition: transform 0.3s ease;
+}
+
+.card.flipped {
+  transform: rotateX(-180deg);
+}
+
+.card-face {
+  @include flexCenter;
+  align-items: unset;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.card-face__front {
+  align-items: flex-end;
+  background-color: red;
+  color: white;
+}
+
+.card-face__back {
+  align-items: flex-start;
+  transform: rotateX(180deg);
+  background-color: blue;
+  color: white;
+}

@@ -33,8 +33,13 @@ const flipCard = (el, card) => {
     const clonedCard = card.cloneNode(true);
     clonedCard.classList.remove('flipped');
 
-    el.replaceChild(clonedCard, card);
-
+    try {
+      el.replaceChild(clonedCard, card);
+    } catch (e) {
+      console.log(e);
+      // console.log(el);
+      // console.log(card);
+    }
     card = clonedCard;
   });
 
@@ -66,12 +71,12 @@ const updateDOM = (el, currentTime) => {
 
 // ********** COUNTDOWN TIMER **********
 // Timers
-const HOURS = 1; // 24
+const HOURS = 2; // 24
 const MINUTES = 3; // 60
 const SECONDS = 5; // 60
 
 // start the count at 14 days
-let days = 1; // 8
+let days = 2; // 8
 let hours = HOURS; // 23
 let minutes = MINUTES; // 55
 let seconds = SECONDS; // 41
@@ -84,41 +89,63 @@ let interval;
 // if days === 0 hours === 0 minutes === 0 seconds === 0, END countdown
 
 const countdownDays = () => {
-  if (days > 0) {
+  if (days >= 0) {
     days--;
     updateDOM(daysEl, days);
-  } else if (days <= 0) {
+
+    // if (days === 0) {
+    //   countdownDays();
+    // }
+  } else if (days < 0) {
     return;
   }
 };
 
 const countdownHours = () => {
-  if (hours > 0) {
+  if (hours >= 0) {
     hours--;
     updateDOM(hoursEl, hours);
+
+    if (hours === 0 && days >= 0) {
+      countdownDays();
+      hours = HOURS + 1;
+    }
   } else if (hours <= 0) {
-    countdownDays();
-    hours = HOURS + 1;
+    // countdownDays();
+    // hours = HOURS + 1;
   }
 };
 
 const countdownMinutes = () => {
-  if (minutes > 0) {
+  if (minutes >= 0) {
     minutes--;
     updateDOM(minutesEl, minutes);
-  } else if (minutes <= 0) {
-    countdownHours();
-    minutes = MINUTES + 1;
+
+    if (minutes === 0 && (days >= 0 || hours >= 0)) {
+      countdownHours();
+      minutes = MINUTES + 1;
+    }
+  } else if (minutes < 0) {
+    // countdownHours();
+    // minutes = MINUTES + 1;
   }
 };
 
 const countdownSeconds = () => {
-  if (seconds > 0) {
+  if (seconds >= 0) {
     seconds--;
     updateDOM(secondsEl, seconds);
-  } else if (seconds <= 0) {
-    countdownMinutes();
-    seconds = SECONDS + 1;
+
+    if (seconds === 0 && (days >= 0 || hours >= 0 || minutes >= 0)) {
+      countdownMinutes();
+      seconds = SECONDS + 1;
+    }
+  } else if (seconds < 0) {
+    // if (seconds === 0) {
+    // countdownMinutes();
+    // }
+    // countdownMinutes();
+    // seconds = SECONDS + 1;
   }
 };
 
@@ -144,4 +171,4 @@ initializeDOM(minutesEl, minutes);
 initializeDOM(hoursEl, hours);
 initializeDOM(daysEl, days);
 
-// startCountdown();
+startCountdown();

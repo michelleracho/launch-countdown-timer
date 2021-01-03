@@ -21,10 +21,26 @@ const initializeDOM = (el, currentTime) => {
   nextTime = padZeros(nextTime);
 
   el.setAttribute('data-current-number', currentTime);
-  el.setAttribute('data-next-number', currentTime);
+  el.setAttribute('data-next-number', nextTime);
 
   cardFaceFront.innerText = currentTime;
-  cardFaceBack.innerText = currentTime;
+  cardFaceBack.innerText = nextTime;
+};
+
+// flip card on countdown
+const flipCard = (el, card) => {
+  card.addEventListener('transitionend', () => {
+    const clonedCard = card.cloneNode(true);
+    clonedCard.classList.remove('flipped');
+
+    el.replaceChild(clonedCard, card);
+
+    // card = clonedCard;
+  });
+
+  if (!card.classList.contains('flipped')) {
+    card.classList.add('flipped');
+  }
 };
 
 // update DOM
@@ -44,7 +60,7 @@ const updateDOM = (el, currentTime) => {
   cardFaceFront.innerText = currentTime;
   cardFaceBack.innerText = nextTime;
 
-  card.classList.add('flipped');
+  flipCard(el, card);
 };
 
 // ********** COUNTDOWN TIMER **********

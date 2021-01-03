@@ -15,7 +15,7 @@ const initializeDOM = (el, currentTime) => {
   const cardFaceFront = el.querySelector('.card-face__front');
   const cardFaceBack = el.querySelector('.card-face__back');
 
-  let nextTime = currentTime--;
+  let nextTime = currentTime - 1;
 
   currentTime = padZeros(currentTime);
   nextTime = padZeros(nextTime);
@@ -35,7 +35,7 @@ const flipCard = (el, card) => {
 
     el.replaceChild(clonedCard, card);
 
-    // card = clonedCard;
+    card = clonedCard;
   });
 
   if (!card.classList.contains('flipped')) {
@@ -49,7 +49,8 @@ const updateDOM = (el, currentTime) => {
   const cardFaceFront = el.querySelector('.card-face__front');
   const cardFaceBack = el.querySelector('.card-face__back');
 
-  let nextTime = currentTime--;
+  // let nextTime = currentTime <= 0 ? 0 : currentTime - 1;
+  let nextTime = currentTime - 1;
 
   currentTime = padZeros(currentTime);
   nextTime = padZeros(nextTime);
@@ -97,7 +98,7 @@ const countdownHours = () => {
     updateDOM(hoursEl, hours);
   } else if (hours <= 0) {
     countdownDays();
-    hours = HOURS;
+    hours = HOURS + 1;
   }
 };
 
@@ -107,7 +108,7 @@ const countdownMinutes = () => {
     updateDOM(minutesEl, minutes);
   } else if (minutes <= 0) {
     countdownHours();
-    minutes = MINUTES;
+    minutes = MINUTES + 1;
   }
 };
 
@@ -117,7 +118,7 @@ const countdownSeconds = () => {
     updateDOM(secondsEl, seconds);
   } else if (seconds <= 0) {
     countdownMinutes();
-    seconds = SECONDS;
+    seconds = SECONDS + 1;
   }
 };
 
@@ -128,6 +129,7 @@ const countdown = () => {
     return;
   }
 
+  // console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}sec`);
   countdownSeconds();
 };
 
@@ -142,4 +144,4 @@ initializeDOM(minutesEl, minutes);
 initializeDOM(hoursEl, hours);
 initializeDOM(daysEl, days);
 
-startCountdown();
+// startCountdown();

@@ -6,7 +6,7 @@
   transform-style: preserve-3d;
   transform-origin: bottom;
   transform: rotateX(0);
-  transition: transform 0.3s ease-in;
+  transition: transform 0.5s ease-in;
 
   &.flipped {
     transform: rotateX(-180deg);
@@ -31,14 +31,12 @@
 }
 
 .card-face__front {
-  // background-color: blue;
   align-items: flex-end;
   box-shadow: inset 0 1em 0 rgba($color-neutral-mostly-black-blue, 0.35);
   border-radius: $border-radius $border-radius 0 0;
 }
 
 .card-face__back {
-  // background-color: red;
   align-items: flex-start;
   transform: rotateX(180deg);
   border-radius: 0 0 $border-radius $border-radius;

@@ -1,8 +1,24 @@
+// ********** DOM **********
 // DOM elements
 const secondsEl = document.querySelector('#seconds');
 const minutesEl = document.querySelector('#minutes');
 const hoursEl = document.querySelector('#hours');
 const daysEl = document.querySelector('#days');
+
+// initialize DOM countdown values
+const initializeDOM = (el, currentTime) => {
+  const flipClock = el;
+  const cardFaceFront = el.querySelector('.card-face__front');
+  const cardFaceBack = el.querySelector('.card-face__back');
+
+  const nextTime = currentTime;
+
+  flipClock.setAttribute('data-current-number', currentTime);
+  flipClock.setAttribute('data-next-number', nextTime);
+
+  cardFaceFront.innerText = currentTime;
+  cardFaceBack.innerText = nextTime;
+};
 
 // update DOM
 const updateDOM = (el, currentTime) => {
@@ -22,15 +38,16 @@ const updateDOM = (el, currentTime) => {
   card.classList.add('flipped');
 };
 
+// ********** COUNTDOWN TIMER **********
 // Timers
 const HOURS = 1; // 24
-const MINUTES = 2; // 60
-const SECONDS = 3; // 60
+const MINUTES = 3; // 60
+const SECONDS = 5; // 60
 
 // start the count at 14 days
-let days = 1;
-let hours = HOURS; // 8
-let minutes = MINUTES; // 23
+let days = 1; // 8
+let hours = HOURS; // 23
+let minutes = MINUTES; // 55
 let seconds = SECONDS; // 41
 
 let interval;
@@ -93,5 +110,11 @@ const countdown = () => {
 const startCountdown = () => {
   interval = setInterval(countdown, 1000);
 };
+
+// inits
+initializeDOM(secondsEl, seconds);
+initializeDOM(minutesEl, minutes);
+initializeDOM(hoursEl, hours);
+initializeDOM(daysEl, days);
 
 startCountdown();

@@ -21,13 +21,16 @@
     <title>Frontend Mentor | Launch countdown timer</title>
   </head>
   <body>
+    <!-- TEST -->
+    <div class="test"></div>
+
     <main class="container">
       <h1>We're launching soon</h1>
 
       <div class="countdown">
         <figure
           id="days"
-          class="flip-clock"
+          class="flip-clock flip-clock--days"
           data-current-number="08"
           data-next-number="07"
         >
@@ -42,7 +45,7 @@
 
         <figure
           id="hours"
-          class="flip-clock"
+          class="flip-clock flip-clock--hours"
           data-current-number="23"
           data-next-number="22"
         >
@@ -57,7 +60,7 @@
 
         <figure
           id="minutes"
-          class="flip-clock"
+          class="flip-clock flip-clock--minutes"
           data-current-number="55"
           data-next-number="54"
         >
@@ -72,7 +75,7 @@
 
         <figure
           id="seconds"
-          class="flip-clock"
+          class="flip-clock flip-clock--seconds"
           data-current-number="41"
           data-next-number="40"
         >
@@ -128,5 +131,7 @@
         >. Coded by <a href="#">Michelle Racho</a>.
       </div>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>

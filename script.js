@@ -5,32 +5,41 @@ const minutesEl = document.querySelector('#minutes');
 const hoursEl = document.querySelector('#hours');
 const daysEl = document.querySelector('#days');
 
+// pad 0s if digit is less than 10
+const padZeros = num => {
+  return num >= 0 && num < 10 ? `0${num}` : num;
+};
+
 // initialize DOM countdown values
 const initializeDOM = (el, currentTime) => {
-  const flipClock = el;
   const cardFaceFront = el.querySelector('.card-face__front');
   const cardFaceBack = el.querySelector('.card-face__back');
 
-  const nextTime = currentTime;
+  let nextTime = currentTime--;
 
-  flipClock.setAttribute('data-current-number', currentTime);
-  flipClock.setAttribute('data-next-number', nextTime);
+  currentTime = padZeros(currentTime);
+  nextTime = padZeros(nextTime);
+
+  el.setAttribute('data-current-number', currentTime);
+  el.setAttribute('data-next-number', currentTime);
 
   cardFaceFront.innerText = currentTime;
-  cardFaceBack.innerText = nextTime;
+  cardFaceBack.innerText = currentTime;
 };
 
 // update DOM
 const updateDOM = (el, currentTime) => {
-  const flipClock = el;
   const card = el.querySelector('.card');
   const cardFaceFront = el.querySelector('.card-face__front');
   const cardFaceBack = el.querySelector('.card-face__back');
 
-  const nextTime = currentTime--;
+  let nextTime = currentTime--;
 
-  flipClock.setAttribute('data-current-number', currentTime);
-  flipClock.setAttribute('data-next-number', nextTime);
+  currentTime = padZeros(currentTime);
+  nextTime = padZeros(nextTime);
+
+  el.setAttribute('data-current-number', currentTime);
+  el.setAttribute('data-next-number', nextTime);
 
   cardFaceFront.innerText = currentTime;
   cardFaceBack.innerText = nextTime;

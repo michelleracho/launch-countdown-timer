@@ -1,39 +1,63 @@
+const HOURS = 1; // 24
+const MINUTES = 2; // 60
+const SECONDS = 3; // 60
+
+// start the count at 14 days
+let days = 1;
+let hours = HOURS; // 8
+let minutes = MINUTES; // 23
+let seconds = SECONDS; // 41
+
+let interval;
+
 // if seconds === 0, minutes-- seconds = 60
 // if minutes === 0, hours-- minute = 60 seconds = 60
 // if hours === 0, days-- hours = 60 minute = 60 seconds = 60
-// if days === 0 hours === 0 minutes === 0 seconds === 0, 🎉
+// if days === 0 hours === 0 minutes === 0 seconds === 0, END countdown
 
 const countdownDays = () => {
-  console.log('days--');
+  if (days > 0) {
+    days--;
+    console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}s`);
+    // updateDOM(days);
+  } else if (days <= 0) {
+    return;
+  }
 };
 
 const countdownHours = () => {
-  console.log('hours--');
+  if (hours > 0) {
+    hours--;
+    console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}s`);
+    // updateDOM(days);
+  } else if (hours <= 0) {
+    // days--
+    countdownDays();
+    hours = HOURS;
+  }
 };
 
 const countdownMinutes = () => {
   if (minutes > 0) {
     minutes--;
-    console.log(`${minutes}min`);
+    console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}s`);
     // updateDOM(days);
   } else if (minutes <= 0) {
-    // minutes--
+    // hours--
     countdownHours();
-    minutes = 2;
-  } else {
-    return;
+    minutes = MINUTES;
   }
 };
 
 const countdownSeconds = () => {
   if (seconds > 0) {
     seconds--;
-    console.log(`${seconds}s`);
+    console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}s`);
     // updateDOM(days);
   } else if (seconds <= 0) {
     // minutes--
     countdownMinutes();
-    seconds = 3;
+    seconds = SECONDS;
   }
 };
 
@@ -51,13 +75,5 @@ const countdown = () => {
 const startCountdown = () => {
   interval = setInterval(countdown, 1000);
 };
-
-// start the count at 14 days
-let days = 0;
-let hours = 0;
-let minutes = 2;
-let seconds = 3;
-
-let interval;
 
 startCountdown();

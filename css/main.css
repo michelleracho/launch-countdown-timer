@@ -115,6 +115,7 @@ body {
   width: 100%;
   height: 50%;
   overflow: hidden;
+  border: 1px solid #191a24;
 }
 
 .flip-clock::before {
@@ -124,6 +125,7 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   border-radius: 0 0 calc(0.25vw + 0.4rem) calc(0.25vw + 0.4rem);
+  border-top: none;
 }
 
 .flip-clock::after {
@@ -132,9 +134,10 @@ body {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  -webkit-box-shadow: inset 0 1em 0 rgba(25, 26, 36, 0.35);
-          box-shadow: inset 0 1em 0 rgba(25, 26, 36, 0.35);
   border-radius: calc(0.25vw + 0.4rem) calc(0.25vw + 0.4rem) 0 0;
+  border-bottom: none;
+  background-color: #2d2f45;
+  color: #fb567f;
 }
 
 .flip-clock > * {
@@ -202,15 +205,17 @@ body {
 .card-face__front,
 .card-face__back {
   background-color: #343650;
+  border: 1px solid #191a24;
 }
 
 .card-face__front {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  -webkit-box-shadow: inset 0 1em 0 rgba(25, 26, 36, 0.35);
-          box-shadow: inset 0 1em 0 rgba(25, 26, 36, 0.35);
   border-radius: calc(0.25vw + 0.4rem) calc(0.25vw + 0.4rem) 0 0;
+  border-bottom: none;
+  background-color: #2d2f45;
+  color: #fb567f;
 }
 
 .card-face__back {
@@ -220,6 +225,7 @@ body {
   -webkit-transform: rotateX(180deg);
           transform: rotateX(180deg);
   border-radius: 0 0 calc(0.25vw + 0.4rem) calc(0.25vw + 0.4rem);
+  border-top: none;
 }
 
 .cutout,

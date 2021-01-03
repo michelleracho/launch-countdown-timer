@@ -1,3 +1,28 @@
+// DOM elements
+const secondsEl = document.querySelector('#seconds');
+const minutesEl = document.querySelector('#minutes');
+const hoursEl = document.querySelector('#hours');
+const daysEl = document.querySelector('#days');
+
+// update DOM
+const updateDOM = (el, currentTime) => {
+  const flipClock = el;
+  const card = el.querySelector('.card');
+  const cardFaceFront = el.querySelector('.card-face__front');
+  const cardFaceBack = el.querySelector('.card-face__back');
+
+  const nextTime = currentTime--;
+
+  flipClock.setAttribute('data-current-number', currentTime);
+  flipClock.setAttribute('data-next-number', nextTime);
+
+  cardFaceFront.innerText = currentTime;
+  cardFaceBack.innerText = nextTime;
+
+  card.classList.add('flipped');
+};
+
+// Timers
 const HOURS = 1; // 24
 const MINUTES = 2; // 60
 const SECONDS = 3; // 60
@@ -18,8 +43,7 @@ let interval;
 const countdownDays = () => {
   if (days > 0) {
     days--;
-    console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}s`);
-    // updateDOM(days);
+    updateDOM(daysEl, days);
   } else if (days <= 0) {
     return;
   }
@@ -28,10 +52,8 @@ const countdownDays = () => {
 const countdownHours = () => {
   if (hours > 0) {
     hours--;
-    console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}s`);
-    // updateDOM(days);
+    updateDOM(hoursEl, hours);
   } else if (hours <= 0) {
-    // days--
     countdownDays();
     hours = HOURS;
   }
@@ -40,10 +62,8 @@ const countdownHours = () => {
 const countdownMinutes = () => {
   if (minutes > 0) {
     minutes--;
-    console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}s`);
-    // updateDOM(days);
+    updateDOM(minutesEl, minutes);
   } else if (minutes <= 0) {
-    // hours--
     countdownHours();
     minutes = MINUTES;
   }
@@ -52,10 +72,8 @@ const countdownMinutes = () => {
 const countdownSeconds = () => {
   if (seconds > 0) {
     seconds--;
-    console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}s`);
-    // updateDOM(days);
+    updateDOM(secondsEl, seconds);
   } else if (seconds <= 0) {
-    // minutes--
     countdownMinutes();
     seconds = SECONDS;
   }

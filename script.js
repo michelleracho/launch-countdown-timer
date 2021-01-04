@@ -48,12 +48,12 @@ const setupCard = (el, currentTime, nextTime, resetTime) => {
   resetTime && flipCard(el, card);
 };
 
-// update DOM  countdown values
+// update DOM countdown values
 const updateDOM = (el, currentTime, resetTime) => {
   let nextTime = currentTime - 1;
 
+  // hide/mask if time === -1 on DOM
   if (resetTime) {
-    // hide/mask -1 on DOM
     if (currentTime === 0) {
       nextTime = resetTime;
     } else if (currentTime === -1) {
@@ -67,15 +67,16 @@ const updateDOM = (el, currentTime, resetTime) => {
 
 // ********** COUNTDOWN TIMER **********
 // Timers
-const HOURS = 0; // 24
-const MINUTES = 2; // 60
-const SECONDS = 3; // 60
+const HOURS = 24; // 1 day
+const MINUTES = 60; // 1 hr
+const SECONDS = 60; // 1 min
 
-// start the count at 14 days
-let days = 0; // 8
-let hours = HOURS; // 23
-let minutes = MINUTES; // 55
-let seconds = SECONDS; // 41
+// per challenge README, start the count at 14 days
+// but I want to match the screenshot
+let days = 8;
+let hours = 23;
+let minutes = 55;
+let seconds = 41;
 
 let interval;
 
@@ -87,7 +88,7 @@ let interval;
 const countdownDays = () => {
   if (days > 0) {
     days--;
-    updateDOM(daysEl, days);
+    updateDOM(daysEl, days, days);
   } else {
     return;
   }

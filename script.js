@@ -52,6 +52,8 @@ const updateDOM = (el, currentTime) => {
   const cardFaceFront = el.querySelector('.card-face__front');
   const cardFaceBack = el.querySelector('.card-face__back');
 
+  // add 1 to display all countdown
+  // currentTime = currentTime + 1;
   // let nextTime = currentTime <= 0 ? 0 : currentTime - 1;
   let nextTime = currentTime - 1;
 
@@ -91,15 +93,8 @@ const countdownDays = () => {
   if (days > 0) {
     days--;
     updateDOM(daysEl, days);
-  }
-  // else if (days <= 0) {
-  //   if (days === 0 && !lastDay) {
-  //     // hours = HOURS + 1;
-  //     // countdownHours();
-  //     lastDay = true;
-  //   }
-  // }
-  else {
+  } else {
+    // lastDay = true;
     return;
   }
 };
@@ -108,11 +103,9 @@ const countdownHours = () => {
   hours--;
   updateDOM(hoursEl, hours);
 
-  if (hours === 0) {
-    hours = HOURS + 1;
-  }
-  if (hours === HOURS) {
+  if (hours < 0) {
     countdownDays();
+    hours = HOURS;
   }
 };
 
@@ -120,17 +113,9 @@ const countdownMinutes = () => {
   minutes--;
   updateDOM(minutesEl, minutes);
 
-  if (minutes === 0) {
-    minutes = MINUTES + 1;
-  }
-  if (minutes === MINUTES) {
-    // if (hours === 0 && days != 0) {
-    //   hours = HOURS;
-    // }
-    // if (!lastDay) {
-    //   // return;
-    // }
+  if (minutes < 0) {
     countdownHours();
+    minutes = MINUTES;
   }
 };
 
@@ -138,11 +123,9 @@ const countdownSeconds = () => {
   seconds--;
   updateDOM(secondsEl, seconds);
 
-  if (seconds === 0) {
-    seconds = SECONDS + 1;
-  }
-  if (seconds === SECONDS) {
+  if (seconds < 0) {
     countdownMinutes();
+    seconds = SECONDS;
   }
 };
 
@@ -153,7 +136,7 @@ const countdown = () => {
     return;
   }
 
-  // console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}sec`);
+  console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}sec`);
   countdownSeconds();
 };
 

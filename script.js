@@ -10,24 +10,8 @@ const padZeros = num => {
   return num >= 0 && num < 10 ? `0${num}` : num;
 };
 
-// initialize DOM countdown values
-const initializeDOM = (el, currentTime) => {
-  const cardFaceFront = el.querySelector('.card-face__front');
-  const cardFaceBack = el.querySelector('.card-face__back');
-
-  let nextTime = currentTime - 1;
-
-  currentTime = padZeros(currentTime);
-  nextTime = padZeros(nextTime);
-
-  el.setAttribute('data-current-number', currentTime);
-  el.setAttribute('data-next-number', nextTime);
-
-  cardFaceFront.innerText = currentTime;
-  cardFaceBack.innerText = nextTime;
-};
-
 // flip card on countdown
+// clone card to remove flip transition without flipping it backwards
 const flipCard = (el, card) => {
   card.addEventListener('transitionend', () => {
     const clonedCard = card.cloneNode(true);
@@ -46,32 +30,14 @@ const flipCard = (el, card) => {
   }
 };
 
-// update DOM
-const updateDOM = (el, currentTime, resetTime) => {
+// setup card
+const setupCard = (el, currentTime, nextTime, resetTime) => {
+  currentTime = padZeros(currentTime);
+  nextTime = padZeros(nextTime);
+
   const card = el.querySelector('.card');
   const cardFaceFront = el.querySelector('.card-face__front');
   const cardFaceBack = el.querySelector('.card-face__back');
-
-  // let nextTime = currentTime <= 0 ? 0 : currentTime - 1;
-  let nextTime = currentTime - 1;
-
-  let logggg = { currentTime, nextTime };
-
-  // hide/mask -1 on DOM
-  if (currentTime === 0) {
-    nextTime = resetTime;
-
-    logggg = `nextTime === -1, { ${currentTime}, ${nextTime} }`;
-  } else if (currentTime === -1) {
-    currentTime = resetTime;
-    nextTime = resetTime - 1;
-
-    logggg = `currTime === -1, { ${currentTime}, ${nextTime} }`;
-  }
-  console.log(logggg);
-
-  currentTime = padZeros(currentTime);
-  nextTime = padZeros(nextTime);
 
   el.setAttribute('data-current-number', currentTime);
   el.setAttribute('data-next-number', nextTime);
@@ -79,7 +45,24 @@ const updateDOM = (el, currentTime, resetTime) => {
   cardFaceFront.innerText = currentTime;
   cardFaceBack.innerText = nextTime;
 
-  flipCard(el, card);
+  resetTime && flipCard(el, card);
+};
+
+// update DOM  countdown values
+const updateDOM = (el, currentTime, resetTime) => {
+  let nextTime = currentTime - 1;
+
+  if (resetTime) {
+    // hide/mask -1 on DOM
+    if (currentTime === 0) {
+      nextTime = resetTime;
+    } else if (currentTime === -1) {
+      currentTime = resetTime;
+      nextTime = resetTime - 1;
+    }
+  }
+
+  setupCard(el, currentTime, nextTime, resetTime);
 };
 
 // ********** COUNTDOWN TIMER **********
@@ -156,10 +139,10 @@ const startCountdown = () => {
   interval = setInterval(countdown, 1000);
 };
 
-// inits
-initializeDOM(secondsEl, seconds);
-initializeDOM(minutesEl, minutes);
-initializeDOM(hoursEl, hours);
-initializeDOM(daysEl, days);
+// initialize DOM
+updateDOM(secondsEl, seconds);
+updateDOM(minutesEl, minutes);
+updateDOM(hoursEl, hours);
+updateDOM(daysEl, days);
 
 startCountdown();

@@ -47,15 +47,28 @@ const flipCard = (el, card) => {
 };
 
 // update DOM
-const updateDOM = (el, currentTime) => {
+const updateDOM = (el, currentTime, resetTime) => {
   const card = el.querySelector('.card');
   const cardFaceFront = el.querySelector('.card-face__front');
   const cardFaceBack = el.querySelector('.card-face__back');
 
-  // add 1 to display all countdown
-  // currentTime = currentTime + 1;
   // let nextTime = currentTime <= 0 ? 0 : currentTime - 1;
   let nextTime = currentTime - 1;
+
+  let logggg = { currentTime, nextTime };
+
+  // hide/mask -1 on DOM
+  if (currentTime === 0) {
+    nextTime = resetTime;
+
+    logggg = `nextTime === -1, { ${currentTime}, ${nextTime} }`;
+  } else if (currentTime === -1) {
+    currentTime = resetTime;
+    nextTime = resetTime - 1;
+
+    logggg = `currTime === -1, { ${currentTime}, ${nextTime} }`;
+  }
+  console.log(logggg);
 
   currentTime = padZeros(currentTime);
   nextTime = padZeros(nextTime);
@@ -66,23 +79,22 @@ const updateDOM = (el, currentTime) => {
   cardFaceFront.innerText = currentTime;
   cardFaceBack.innerText = nextTime;
 
-  // flipCard(el, card);
+  flipCard(el, card);
 };
 
 // ********** COUNTDOWN TIMER **********
 // Timers
-const HOURS = 1; // 24
+const HOURS = 0; // 24
 const MINUTES = 2; // 60
 const SECONDS = 3; // 60
 
 // start the count at 14 days
-let days = 1; // 8
+let days = 0; // 8
 let hours = HOURS; // 23
 let minutes = MINUTES; // 55
 let seconds = SECONDS; // 41
 
 let interval;
-// let lastDay = false;
 
 // if seconds === 0, minutes-- seconds = 60
 // if minutes === 0, hours-- minute = 60 seconds = 60
@@ -94,14 +106,13 @@ const countdownDays = () => {
     days--;
     updateDOM(daysEl, days);
   } else {
-    // lastDay = true;
     return;
   }
 };
 
 const countdownHours = () => {
   hours--;
-  updateDOM(hoursEl, hours);
+  updateDOM(hoursEl, hours, HOURS);
 
   if (hours < 0) {
     countdownDays();
@@ -111,7 +122,7 @@ const countdownHours = () => {
 
 const countdownMinutes = () => {
   minutes--;
-  updateDOM(minutesEl, minutes);
+  updateDOM(minutesEl, minutes, MINUTES);
 
   if (minutes < 0) {
     countdownHours();
@@ -121,7 +132,7 @@ const countdownMinutes = () => {
 
 const countdownSeconds = () => {
   seconds--;
-  updateDOM(secondsEl, seconds);
+  updateDOM(secondsEl, seconds, SECONDS);
 
   if (seconds < 0) {
     countdownMinutes();
@@ -136,7 +147,7 @@ const countdown = () => {
     return;
   }
 
-  console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}sec`);
+  // console.log(`${days} days ${hours}hrs ${minutes}min ${seconds}sec`);
   countdownSeconds();
 };
 

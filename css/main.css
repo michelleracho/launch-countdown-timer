@@ -34,6 +34,14 @@ body {
   background: url(/images/pattern-hills.svg) no-repeat bottom right 20%, url(/images/bg-stars.svg), -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#1e1f29));
   background: url(/images/pattern-hills.svg) no-repeat bottom right 20%, url(/images/bg-stars.svg), linear-gradient(to bottom, #191a24, #1e1f29);
   position: relative;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 1440px) {
+  body {
+    background: url(/images/pattern-hills.svg) no-repeat bottom/contain, url(/images/bg-stars.svg), -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#1e1f29));
+    background: url(/images/pattern-hills.svg) no-repeat bottom/contain, url(/images/bg-stars.svg), linear-gradient(to bottom, #191a24, #1e1f29);
+  }
 }
 
 .container {
@@ -50,7 +58,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 14.1rem 2.4rem auto;
   margin: 14.1rem 0 auto;
   padding: 0 2.4rem;
 }
@@ -170,10 +177,10 @@ body {
           transform-origin: bottom;
   -webkit-transform: rotateX(0);
           transform: rotateX(0);
-  -webkit-transition: -webkit-transform 0.5s ease-in;
-  transition: -webkit-transform 0.5s ease-in;
-  transition: transform 0.5s ease-in;
-  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+  -webkit-transition: -webkit-transform 0.7s ease-in;
+  transition: -webkit-transform 0.7s ease-in;
+  transition: transform 0.7s ease-in;
+  transition: transform 0.7s ease-in, -webkit-transform 0.7s ease-in;
 }
 
 .card.flipped {

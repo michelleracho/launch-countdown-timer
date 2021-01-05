@@ -3,3 +3,9 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin breakpoint($bp) {
+  @media only screen and (min-width: $bp) {
+    @content;
+  }
+}

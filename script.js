@@ -146,4 +146,4 @@ updateDOM(minutesEl, minutes);
 updateDOM(hoursEl, hours);
 updateDOM(daysEl, days);
 
-startCountdown();
+// startCountdown();

@@ -1,8 +1,6 @@
 .container {
-  // border: 1px solid red;
   @include flexCenter;
   flex-direction: column;
-  margin: 14.1rem 2.4rem auto;
   margin: 14.1rem 0 auto;
   padding: 0 2.4rem;
 
@@ -17,5 +15,4 @@
 .countdown {
   @include flexCenter;
   margin-top: 6rem;
-  // padding: 0 2.4rem;
 }

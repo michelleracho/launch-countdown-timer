@@ -2,8 +2,10 @@
   font-size: clamp(3.5rem, 5vw, 7.8rem);
   color: $color-primary-red;
   line-height: 0;
-  width: clamp(6.9rem, 9vw, 14.7rem);
-  height: clamp(6.7rem, 9vw, 14.1rem);
+  // width: clamp(6.9rem, 9vw, 14.7rem);
+  // height: clamp(6.7rem, 9vw, 14.1rem);
+  width: calc(1vw + 1.843em);
+  height: calc(1vw + 1.759em);
   display: flex;
   position: relative;
   perspective: 350px;
@@ -19,8 +21,6 @@
     @include flexCenter;
     align-items: unset;
     background-color: $color-neutral-desaturated-blue;
-    // border-radius: 0.5rem;
-    // border-radius: $border-radius;
     position: absolute;
     z-index: 0;
     width: 100%;
@@ -30,23 +30,19 @@
   }
 
   &::before {
-    // background-color: red;
     content: attr(data-current-number);
     bottom: 0;
     align-items: flex-start;
     border-radius: 0 0 $border-radius $border-radius;
     border-top: none;
-    // color: darken($color-primary-red, 80%);
   }
 
   &::after {
-    // background-color: blue;
     content: attr(data-next-number);
     top: 0;
     align-items: flex-end;
     border-radius: $border-radius $border-radius 0 0;
     border-bottom: none;
-    // box-shadow: inset 0 1em 0 rgba($color-neutral-mostly-black-blue, 0.35);
     background-color: darken($color-neutral-desaturated-blue, 3.5%);
     color: darken($color-primary-red, 2%);
   }
@@ -65,6 +61,5 @@
   text-align: center;
   width: 100%;
   position: absolute;
-  // bottom: calc(-1.125rem - 1vw);
   bottom: calc(-1.56rem - 1vw);
 }

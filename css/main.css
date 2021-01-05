@@ -86,8 +86,8 @@ body {
   font-size: clamp(3.5rem, 5vw, 7.8rem);
   color: #fb6087;
   line-height: 0;
-  width: clamp(6.9rem, 9vw, 14.7rem);
-  height: clamp(6.7rem, 9vw, 14.1rem);
+  width: calc(1vw + 1.843em);
+  height: calc(1vw + 1.759em);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

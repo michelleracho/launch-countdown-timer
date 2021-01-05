@@ -7,6 +7,13 @@ $color-neutral-desaturated-blue: hsl(236, 21%, 26%);
 $color-neutral-very-dark-blue: hsl(235, 16%, 14%);
 $color-neutral-mostly-black-blue: hsl(234, 17%, 12%);
 
+// $color-hill: #2f2439;
+// $color-hill: #211a29;
+$color-hill: lighten(#211a29, 2%);
+
+$color-bg-gradient: url(/images/bg-stars.svg),
+  linear-gradient(to bottom, $color-neutral-mostly-black-blue, $color-hill);
+
 // FONT
 $font-primary: 'Red Hat Text', sans-serif;
 

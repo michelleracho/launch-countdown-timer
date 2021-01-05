@@ -31,16 +31,16 @@ body {
   font-family: "Red Hat Text", sans-serif;
   color: white;
   min-height: 100vh;
-  background: url(/images/pattern-hills.svg) no-repeat bottom right 20%, url(/images/bg-stars.svg), -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#1e1f29));
-  background: url(/images/pattern-hills.svg) no-repeat bottom right 20%, url(/images/bg-stars.svg), linear-gradient(to bottom, #191a24, #1e1f29);
+  background: url(/images/pattern-hills.svg) no-repeat bottom right 20%, url(/images/bg-stars.svg), -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#261e2f));
+  background: url(/images/pattern-hills.svg) no-repeat bottom right 20%, url(/images/bg-stars.svg), linear-gradient(to bottom, #191a24, #261e2f);
   position: relative;
   overflow: hidden;
 }
 
 @media only screen and (min-width: 1440px) {
   body {
-    background: url(/images/pattern-hills.svg) no-repeat bottom/contain, url(/images/bg-stars.svg), -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#1e1f29));
-    background: url(/images/pattern-hills.svg) no-repeat bottom/contain, url(/images/bg-stars.svg), linear-gradient(to bottom, #191a24, #1e1f29);
+    background: url(/images/pattern-hills.svg) no-repeat bottom/contain, url(/images/bg-stars.svg), -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#261e2f));
+    background: url(/images/pattern-hills.svg) no-repeat bottom/contain, url(/images/bg-stars.svg), linear-gradient(to bottom, #191a24, #261e2f);
   }
 }
 
